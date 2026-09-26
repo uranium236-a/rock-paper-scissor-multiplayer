@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <header class="top-board">
+            <h1>Rock Paper Scissors</h1>
+            <div class="score-board" aria-label="Match score">
+                <span class="score-name">YOU</span>
+                <span class="score" id="player-score">0</span>
+                <span class="score-name" id="opponent-name">OPPONENT</span>
+                <span class="score" id="computer-score">0</span>
+            </div>
+        </header>
+
+        <form class="lobby" id="lobby">
+            <label for="username">Play online</label>
+            <div class="lobby-controls">
+                <input id="username" name="username" maxlength="16" placeholder="Your username" autocomplete="nickname" required>
+                <button id="match-btn" type="submit">Find a match</button>
+            </div>
+            <p id="connection-status" role="status">Enter a username to find an opponent.</p>
+        </form>
+
+        <section class="status" aria-label="Round status">
+            <div class="computer"><h2 id="cw">Opponent</h2></div>
+            <div class="game-over">
+                <h2 id="msg" aria-live="polite">Waiting for players</h2>
+                <button id="rst-btn" type="button" hidden>Next round</button>
+            </div>
+            <div class="player"><h2 id="pw">You</h2></div>
+        </section>
+
+        <div class="moves" aria-label="Choose your move">
+            <button class="rock-btn" data-move="rock" type="button" disabled>Rock 🗿</button>
+            <button class="paper-btn" data-move="paper" type="button" disabled>Paper 🧻</button>
+            <button class="scissor-btn" data-move="scissors" type="button" disabled>Scissors ✂️</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

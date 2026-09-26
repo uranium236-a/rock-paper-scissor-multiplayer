@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(237, 237, 237);
+}
+
+button,
+input {
+    font: inherit;
+}
+
+.container {
+    border: 1px solid rgb(49, 49, 49);
+    width: min(760px, 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    box-shadow: 10px 10px 10px rgb(2, 1, 36);
+}
+
+.top-board {
+    width: 100%;
+    min-height: 58px;
+    background-color: rgb(32, 32, 32);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0.5em 1em;
+}
+
+.top-board h1 {
+    color: rgb(213, 213, 213);
+    font-size: clamp(1rem, 3vw, 1.35rem);
+}
+
+.score-board {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.score-name {
+    color: gray;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.score {
+    min-width: 2.5em;
+    padding: 0.35em;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-family: cursive;
+}
+
+.lobby {
+    width: 100%;
+    padding: 0.8em 1em;
+    display: grid;
+    grid-template-columns: 1fr minmax(240px, 1.2fr);
+    align-items: center;
+    gap: 0.6em 1em;
+    border-bottom: 1px solid rgb(49, 49, 49);
+    color: rgb(213, 213, 213);
+}
+
+.lobby label {
+    font-weight: bold;
+}
+
+.lobby-controls {
+    display: flex;
+    gap: 0.5em;
+}
+
+.lobby input {
+    min-width: 0;
+    flex: 1;
+    padding: 0.6em;
+    border: 1px solid gray;
+    background: #171717;
+    color: white;
+}
+
+.lobby button,
+#rst-btn {
+    padding: 0.55em 0.8em;
+    border: 1px solid gray;
+    background: #343434;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.lobby button:hover,
+#rst-btn:hover,
+.moves button:hover:not(:disabled) {
+    background: #555;
+}
+
+#connection-status {
+    grid-column: 1 / -1;
+    min-height: 1em;
+    color: rgb(167, 167, 167);
+    font-size: 0.85em;
+}
+
+.status {
+    position: relative;
+    width: calc(100% - 2em);
+    min-height: 300px;
+    margin: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgb(35, 47, 47), rgb(22, 23, 23));
+}
+
+.game-over {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8em;
+    color: rgb(213, 213, 213);
+    text-align: center;
+}
+
+#msg {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+}
+
+.computer,
+.player {
+    position: absolute;
+    width: 100%;
+    padding: 0 0.5em;
+    color: rgb(252, 88, 59);
+    text-shadow: 0 0 8px black;
+}
+
+.computer {
+    top: 0.5em;
+}
+
+.player {
+    bottom: 0.5em;
+    color: rgb(145, 222, 248);
+}
+
+.computer h2,
+.player h2 {
+    font-size: clamp(0.9rem, 3vw, 1.35rem);
+    overflow-wrap: anywhere;
+}
+
+.moves {
+    width: 100%;
+    padding: 0 1em 1em;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1em;
+}
+
+.moves button {
+    min-height: 54px;
+    padding: 0.8em;
+    border: 1px solid #555;
+    background: linear-gradient(rgb(49, 49, 68), rgb(29, 29, 37), rgb(20, 17, 17));
+    color: rgb(209, 209, 209);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.moves button:disabled,
+.lobby button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid rgb(145, 222, 248);
+    outline-offset: 2px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 560px) {
+    body {
+        padding: 10px;
+    }
+
+    .top-board {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .lobby {
+        grid-template-columns: 1fr;
+    }
+
+    #connection-status {
+        grid-column: auto;
+    }
+
+    .status {
+        min-height: 250px;
+    }
+
+    .moves {
+        gap: 0.5em;
+        padding-right: 0.7em;
+        padding-left: 0.7em;
+    }
+
+    .moves button {
+        padding: 0.6em 0.25em;
+        font-size: 0.9em;
+    }
+}
